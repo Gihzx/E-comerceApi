@@ -1,18 +1,30 @@
 function Produto({ product }) {
-    return (
-        <li>
-            <h2>{product.title}</h2>
+  return (
+    <div className="group relative">
+      <img
+        src={product.image}
+        alt={product.title}
+    
+         className="aspect-square w-full rounded-md bg-gray-200 object-contain group-hover:opacity-75  lg:aspect-auto lg:h-80"
+      />
 
-            <p>Categoria: {product.category.name}</p>
+      <div className="mt-4 flex justify-between">
+        <div>
+          <h3 className="text-sm text-gray-700">
+            {product.title}
+          </h3>
 
-            <img
-                src={product.images[0]}
-                alt={product.title}
-            />
+          <p className="mt-1 text-sm text-gray-500">
+            {product.category}
+          </p>
+        </div>
 
-            <p>Preço: R$ {product.price.toFixed(2)}</p>
-        </li>
-    );
+        <p className="text-sm font-medium text-gray-900">
+          R$ {Number(product.price).toFixed(2)}
+        </p>
+      </div>
+    </div>
+  );
 }
 
 export default Produto;

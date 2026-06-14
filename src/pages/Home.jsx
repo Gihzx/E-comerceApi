@@ -1,7 +1,7 @@
 import api from "../../api";
 import {useEffect, useState} from "react";
 import ListagemProduto from "../components/ListagemProduto";
-
+import SkeletonListagem from "../components/SkeletonListagem";
 function Home(){
 const [products, setProducts] = useState([])
 const [loading, setLoading] = useState(true);
@@ -9,7 +9,7 @@ const [error, setError] = useState(null);
         const buscarProdutos = async() => {
             console.log("teste")
             try {
-                const response = await api.get('products?limit=10');                   
+                const response = await api.get('');                   
                 const data = response.data.slice(0, 10);
                 setProducts(data);
                 console.log(data);
@@ -27,7 +27,7 @@ const [error, setError] = useState(null);
     return (
     <>
         {loading ? (
-            <p>Carregando produtos...</p>
+             <SkeletonListagem />
         ) : error ? (
             <p>{error}</p>
         ) : (
